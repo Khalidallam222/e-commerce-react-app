@@ -2,7 +2,7 @@
 
 A simple e-commerce front-end application built with React, showcasing basic features like product listing, filtering, sorting, and a shopping cart. This project was created as part of learning React fundamentals.
 
-![Alt text for the image](public/image.png)
+![Alt text for the image](image.png)
 
 ## Features Implemented
 
