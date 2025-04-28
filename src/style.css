@@ -1,0 +1,492 @@
+/* reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body with brick backround */
+body {
+    background-color: #f4f4f4;
+    background-image: '/brick.png'; /* Path to your brick background image */
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Arial, sans-serif;
+}
+
+/* Navigation Bar */
+.navbar {
+    background-color: #1a1a1a;
+    border-bottom: 1px solid #e0e0e0;
+    width: 100%;
+    padding: 10px 20px;
+}
+
+/* First Row: Menu, Logo, Search, Cart, User */
+.nav-top {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+/* Menu and Logo Container */
+.menu-logo {
+    display: flex;
+    align-items: center;
+    cursor: pointer; /* Make it clicable */
+}
+
+.menu-icon {
+    font-size: 24px;
+    margin-right: 15px; /* Space between menu icon and logo */
+    color: #333;
+}
+
+.menu-icon i:hover{
+    color: #00b7b7; /* Teal color on hover */
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #f7ecec;
+}
+
+/* Search Field */
+.search-field {
+    position: relative;
+    margin-left: auto;
+}
+
+.search-field input {
+    padding: 8px 30px 8px 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 20px;
+    font-size: 14px;
+    width: 250px; /* Adjust width as needed */
+}
+
+.search-field .search-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #333;
+    font-size: 16px;
+}
+
+/* Cart and User Icons */
+.nav-icons {
+    margin-left: auto; /* Pushes icons to the far right */
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.nav-icons i {
+    font-size: 20px;
+    color: #ddd2d2;
+}
+
+.nav-icons i:hover {
+    color: #00b7b7; /* Teal color on hover */
+}
+
+/* Second Row: Navigation Links */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 40px;
+    justify-content: center; /* Center the links in the second row */
+    margin-top: 20px; /* Space between the two rows */
+}
+
+.nav-links li a {
+    color: #e9e0e0;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.nav-links li a:hover {
+    color: #b7001f; /* Teal color on hover */
+}
+
+/* Hide nav-links on mobile screens by default */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none; /* Hide by default */
+        flex-direction: column; /* Stack vertically */
+        align-items: center; /* Center items */
+        margin-top: 20px; /* Space between the two rows */
+    }
+    .nav-links.active {
+        display: flex; /* Show when active */
+    }
+}
+
+/* Main Content */
+.main-content {
+    position: relative;
+    width: 100%;
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end; /* Align items to the bottom */
+    padding-top: 20px; /* Space between the circle and the bottom edge */
+}
+
+/* Teal Circle */
+.teal-circle {
+    width: 100vh; /* Full width */
+    height: 100vh; /* Same as width to keep it a circle */
+    min-width: 300px; /* Minimum size for smaller screens */
+    min-height: 300px; /* Same as min-width */
+    background-color: #00b7b7; /* Teal color */
+    border-radius: 50%;
+    position: relative;
+    
+}
+
+/* Sneaker Image */
+.sneaker-image {
+    width: 90vh; /* Fit within the circle */
+    height: auto; /* Maintain aspect ratio */
+    position: relative;
+    z-index: 2;
+    transform: translate(-50%, -50%) rotate(-30deg); /* Center the sneaker and rotate */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    background-color: transparent; /* Ensure no background is added by CSS */
+  
+}
+
+/* Countdown Display */
+.countdown-display {
+    position: absolute;
+    bottom: 10px; /* Position at the bottom of the circle */
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    z-index: 3; /* Ensure it's above the sneaker image */;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow for better visibility */
+}
+
+/* Fetch Sneakers Button */
+.fetch-sneakers-btn {
+    position: absolute;
+    bottom: 100px; /* Position at the bottom of the circle */
+    padding: 12px 25px;
+    background-color: #00b7b7; /* Teal background */
+    color: #ffffff; /* White text color */
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Add subtle shadow */
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.fetch-sneakers-btn:hover {
+    background-color: #008f8f; /* Darker teal on hover */
+    transform: translateY(-3px); /* Slight lift on hover */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3); /* Enhance shadow on hover */
+}
+
+.fetch-sneakers-btn:active {
+    transform: translateY(0); /* Reset lift on click */
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow on click */
+}
+
+/* Sneaker List */
+/* Sneaker List container styles */
+.sneakers-list {
+    position: relative; /* Position the list relative to its parent container */
+    margin-top: 30px; /* Add space above the list */
+    padding: 20px; /* Add padding for better spacing */
+    background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black background */
+    border-radius: 15px; /* Rounded corners */
+    color: white; /* Set the text color to white for visibility */
+    font-size: 18px; /* Set the font size for the text */
+    line-height: 1.6; /* Improve readability with line spacing */
+    text-align: left; /* Align the text to the left */
+    z-index: 3; /* Ensure the list appears above other elements with lower z-index values */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add a shadow to the text for better readability */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add a subtle shadow around the container */
+    max-width: 600px; /* Limit the width for better layout */
+    overflow-y: auto; /* Add scroll if content overflows */
+    max-height: 300px; /* Limit the height for better layout */
+}
+
+.sneakers-list li {
+    margin-bottom: 10px; /* Add spacing between list items */
+    padding: 10px; /* Add padding for better spacing */
+    background-color: rgba(255, 255, 255, 0.1); /* Slightly lighter background for list items */
+    border-radius: 10px; /* Rounded corners for list items */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.sneakers-list li:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Highlight item on hover */
+    cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+
+/* In style.css */
+.product-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
+    gap: 20px;
+    padding: 20px;
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto; /* Center the list */
+  }
+  
+  .product-card {
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .product-card:hover {
+      transform: translateY(-5px);
+  }
+  
+  .product-image {
+    max-width: 100%;
+    height: 200px; /* Fixed height */
+    object-fit: contain; /* Fit image nicely */
+    margin-bottom: 10px;
+  }
+  
+  .product-name {
+    font-size: 1.1em;
+    margin-bottom: 5px;
+    color: #333;
+  }
+  
+  .product-price {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #008f8f; /* Teal color */
+    margin-bottom: 15px;
+  }
+
+
+  /* In style.css */
+.controls {
+    margin: 20px auto;
+    padding: 15px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    width: 90%;
+    max-width: 600px;
+  }
+  .controls label {
+    margin-right: 5px;
+    font-weight: bold;
+  }
+  .controls select {
+    padding: 5px 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+
+
+  /* In style.css */
+.add-to-cart-btn {
+    background-color: #00b7b7; /* Teal */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.2s ease;
+  }
+  .add-to-cart-btn:hover {
+    background-color: #008f8f; /* Darker teal */
+  }
+
+
+
+  /* In style.css */
+.cart-icon-container {
+    position: relative; /* Needed for positioning the badge */
+    display: inline-block; /* Or flex if needed */
+    cursor: pointer; /* Make it look clickable */
+    color: #ddd2d2; /* Match other icons */
+}
+.cart-icon-container:hover {
+    color: #00b7b7; /* Teal color on hover */
+}
+
+.cart-item-count {
+    position: absolute;
+    top: -8px; /* Adjust positioning */
+    right: -10px; /* Adjust positioning */
+    background-color: #b7001f; /* Red background for badge */
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 0.7em;
+    font-weight: bold;
+    min-width: 18px; /* Ensure it looks okay with single digit */
+    text-align: center;
+    line-height: 1;
+}
+
+
+
+
+/* In style.css */
+.cart-view {
+    padding: 20px;
+    border: 1px solid #ccc;
+    margin: 20px auto;
+    width: 90%;
+    max-width: 800px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+  }
+  .cart-items-list {
+    list-style: none;
+    padding: 0;
+  }
+  .cart-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #eee;
+    padding: 10px 0;
+    gap: 10px;
+  }
+  .cart-item-image {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    margin-right: 10px;
+  }
+  .cart-item-details {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column; /* Stack name and price */
+  }
+  .cart-item-quantity {
+      display: flex;
+      align-items: center;
+  }
+  .cart-item-quantity button {
+      padding: 2px 6px;
+      margin: 0 5px;
+      cursor: pointer;
+  }
+  .cart-item-remove {
+      background-color: #ff4d4d;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+      border-radius: 4px;
+  }
+  .cart-total {
+    text-align: right;
+    margin-top: 20px;
+    font-size: 1.2em;
+  }
+  .checkout-btn {
+     background-color: #4CAF50; /* Green */
+     color: white;
+     padding: 10px 20px;
+     border: none;
+     border-radius: 5px;
+     cursor: pointer;
+     font-size: 1em;
+     margin-left: 15px;
+  }
+
+
+
+
+
+
+
+
+      /* Example Media Queries in style.css */
+
+    /* Tablet Styles */
+    @media (max-width: 768px) {
+        .nav-top {
+           /* Maybe adjust flex properties if needed */
+        }
+        .search-field input {
+            width: 150px; /* Make search smaller */
+        }
+        .product-list {
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Smaller cards */
+            gap: 15px;
+            padding: 15px;
+        }
+        .controls {
+            flex-direction: column; /* Stack controls vertically */
+            align-items: center;
+            gap: 10px;
+        }
+        .cart-item {
+            flex-direction: column; /* Stack cart item details vertically */
+            align-items: flex-start;
+        }
+      }
+  
+      /* Mobile Styles */
+      @media (max-width: 480px) {
+        .nav-top {
+            flex-wrap: wrap; /* Allow wrapping */
+            justify-content: space-between;
+        }
+        .menu-logo {
+            order: 1; /* Ensure menu/logo are first */
+        }
+         .nav-icons {
+            order: 2; /* Icons next */
+         }
+        .search-field {
+            order: 3; /* Search last */
+            width: 100%; /* Full width search */
+            margin-top: 10px;
+            margin-left: 0; /* Reset margin */
+            position: static; /* Reset positioning maybe */
+        }
+         .search-field input {
+            width: calc(100% - 40px); /* Adjust width */
+         }
+         .search-field .search-icon {
+             /* Adjust positioning if needed */
+         }
+  
+        .nav-links {
+           /* Already handled by the toggle logic */
+        }
+        .product-list {
+            grid-template-columns: 1fr; /* Single column */
+        }
+        .cart-item-image {
+            width: 40px;
+            height: 40px;
+        }
+         /* Adjust font sizes, padding etc. */
+      }
